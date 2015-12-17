@@ -50,13 +50,18 @@
 		    border-radius: 0 !important;
 		}
 
+		button:active, button:focus, button:hover {
+		    border:none !important;
+		    outline:none !important;
+		}
+
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
         .panel-default { position:absolute; width:240px; margin-left:30px; margin-top:30px; }
         .panel-heading h4 { font-family: "clarendon-urw-extra-narrow"; font-weight: 700; }
         .panel-subheading { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; margin-bottom: 8px; }
         .panel-body { padding-left: 0; padding-right: 0; }
-        .panel-body h6, .panel-body p { padding-left: 15px; }
+        .panel-body h5, .panel-body p { padding-left: 15px; }
         .btn-3 { width: 100%; }
         .btn-3 .btn-default { 
         	width: 80px; 
@@ -69,7 +74,19 @@
 			font-weight: 300;
 			font-size: 0.9em;
         }
-        .btn-3 .btn-default:hover { background-color: #ddd; }
+        .btn-3 .btn-default:hover { background-color: #ddd; outline: none; }
+		.btn-3 .btn-default:active { box-shadow: none; color: white; background-color: #aaa; font-weight: 500; }
+
+		.btn-3 .on, .btn-3 .on:hover { color: white; background-color: #aaa; font-weight: 500; }
+
+        .list-group-item h5 { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; }
+
+        .panel .glyphicon { font-size: 0.8em; display: inline; }
+        .list-group h5 { display: inline; }
+
+        .glyphicon { color: blue; }
+
+
 
         /*.item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }*/
 /*        .item :hover { background-color: #555; }
@@ -83,21 +100,17 @@
 <div class="panel panel-default">
 	<!-- Default panel contents -->
 	<div class="panel-heading"><h4>SEEP CITY</h4></div>
-	<div class="panel-body">
-		<p>Expore the map using the controls below.</p>
-	</div>
 
 	<ul class="list-group">
-	    <li class="list-group-item">HISTORICAL MAP</li>
-	    <li class="list-group-item">SPRINGS</li>
-	    <li class="list-group-item">HISTORICAL SHORELINE</li>
+	    <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Springs</h5></li>
+	    <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historical shoreline</h5></li>
 	</ul>
 
 	<div class="panel-body">
-		<h6 class="panel-subheading">Historical maps</h6>
+		<h5 class="panel-subheading">Historical maps</h5>
 		<div class="btn-group btn-3" role="group" aria-label="...">
 		  <button type="button" class="btn btn-default">1852</button>
-		  <button type="button" class="btn btn-default">1857</button>
+		  <button type="button" class="btn btn-default raster-2">1857</button>
 		  <button type="button" class="btn btn-default">1869</button>
 		</div>
 	</div>
@@ -186,33 +199,13 @@ map.on('style.load', function() {
 
 	// map.setLayerZoomRange('contours', 11, 22);
 
-	$('.item-1').click(function() {
-		if ($(this).hasClass('off')) {
-			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'visible');
-			$(this).toggleClass('off');	
-		} else {
+	$('.raster-2').click(function() {
+		if ($(this).hasClass('on')) {
 			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'none');
-			$(this).toggleClass('off');			
-		}
-	});
-
-	$('.item-2').click(function() {
-		if ($(this).hasClass('off')) {
-			map.setLayoutProperty('springs', 'visibility', 'visible');
-			$(this).toggleClass('off');	
+			$(this).toggleClass('on');	
 		} else {
-			map.setLayoutProperty('springs', 'visibility', 'none');
-			$(this).toggleClass('off');			
-		}
-	});
-
-	$('.item-3').click(function() {
-		if ($(this).hasClass('off')) {
-			map.setLayoutProperty('1857', 'visibility', 'visible');
-			$(this).toggleClass('off');	
-		} else {
-			map.setLayoutProperty('1857', 'visibility', 'none');
-			$(this).toggleClass('off');			
+			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'visible');
+			$(this).toggleClass('on');			
 		}
 	});
 
