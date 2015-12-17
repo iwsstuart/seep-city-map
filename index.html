@@ -79,12 +79,11 @@
 
 		.btn-3 .on, .btn-3 .on:hover { color: white; background-color: #aaa; font-weight: 500; }
 
-        .list-group-item h5 { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; }
+        .list-group-item:hover { background-color: #eee; cursor: pointer; }
+        .list-group-item h5 { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; display: inline; }
 
-        .panel .glyphicon { font-size: 0.8em; display: inline; }
-        .list-group h5 { display: inline; }
-
-        .glyphicon { color: blue; }
+        .panel .glyphicon { font-size: 0.8em; display: inline; color: #ccc; }
+        .on .glyphicon { color: blue; }
 
 
 
@@ -102,8 +101,8 @@
 	<div class="panel-heading"><h4>SEEP CITY</h4></div>
 
 	<ul class="list-group">
-	    <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Springs</h5></li>
-	    <li class="list-group-item"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historical shoreline</h5></li>
+	    <li class="list-group-item item-1 on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Springs</h5></li>
+	    <li class="list-group-item item-2 on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historical shoreline</h5></li>
 	</ul>
 
 	<div class="panel-body">
@@ -122,6 +121,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaXdzc3R1YXJ0IiwiYSI6InNaNzMzVXMifQ.OFDL1zM5Oj
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iwsstuart/cihwgul0a00kb95lyu8x6dn1q', //stylesheet location
+    minZoom: 11,
+    maxBounds: [[-122.618025, 37.660094],[-122.283068, 37.857349]]
     // center: [-74.50, 40], // starting position
     // zoom: 9 // starting zoom
 });
@@ -157,6 +158,9 @@ map.on('style.load', function() {
   //       }
   //   }
   // }, 'mapbox-iwsstuart-44ys0zp4');
+
+  map.setCenter([-122.451487, 37.756889]);
+  map.setZoom(11.5);
 
   map.addSource("contours_simple", {
     "type": "geojson",
@@ -198,6 +202,27 @@ map.on('style.load', function() {
   // });
 
 	// map.setLayerZoomRange('contours', 11, 22);
+
+	$('.item-1').click(function() {
+		if ($(this).hasClass('on')) {
+			map.setLayoutProperty('springs', 'visibility', 'none');
+			$(this).toggleClass('on');
+		} else {
+			map.setLayoutProperty('springs', 'visibility', 'visible');
+			$(this).toggleClass('on');			
+		}
+	});
+
+	$('.item-2').click(function() {
+		if ($(this).hasClass('on')) {
+			map.setLayoutProperty('1857', 'visibility', 'none');
+			$(this).toggleClass('on');	
+		} else {
+			map.setLayoutProperty('1857', 'visibility', 'visible');
+			$(this).toggleClass('on');			
+		}
+	});
+
 
 	$('.raster-2').click(function() {
 		if ($(this).hasClass('on')) {
