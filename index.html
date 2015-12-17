@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!--     <link rel="stylesheet" href="_css/main.css">
+ -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap -->    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://use.typekit.net/bwy0xzf.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <style>
+	    html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, font, img, input, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td {
+		    margin: 0;
+		    padding: 0;
+		    font-weight: normal;
+		    text-decoration:none;
+		    color:inherit;
+		    list-style: none;
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+		}
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #panel { position:absolute; width:240px; margin-left:30px; margin-top:30px; background-color:#666; }
+        .item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }
+        .item :hover { background-color: #555; }
+        .item h5 { padding-left: 10px; line-height: 40px; }
+
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<div id="panel">
+<div class="item item-1">
+	<h5>HISTORICAL MAP</h5>
+</div>
+<div class="item item-2">
+	<h5>SPRINGS</h5>
+</div>
+<div class="item item-3">
+	<h5>HISTORICAL SHORELINE</h5>
+</div>
+</div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiaXdzc3R1YXJ0IiwiYSI6InNaNzMzVXMifQ.OFDL1zM5OjRUHcL_Y5htCA';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/iwsstuart/cihwgul0a00kb95lyu8x6dn1q', //stylesheet location
+    // center: [-74.50, 40], // starting position
+    // zoom: 9 // starting zoom
+});
+
+map.on('style.load', function() {
+  // map.addSource("1857_shore", {
+  //   "type": "geojson",
+  //   "data": '1857.geojson'
+  // });
+  // map.addSource("springs", {
+  //   "type": "geojson",
+  //   "data": 'springs.geojson'
+  // });
+
+  // map.addSource("contours", {
+  //   "type": "geojson",
+  //   "data": 'contours.geojson'
+  // });
+  // map.addLayer({
+  //   "id": "contours",
+  //   "type": "line",
+  //   "source": "contours",
+  //   "layout": {
+  //       "line-join": "round",
+  //       "line-cap": "round"
+  //   },
+  //   "paint": {
+  //       "line-color": "#ad4a36",
+  //       "line-opacity": 0.5,
+  //       "line-width": {
+  //       	"base": 1,
+  //     		"stops": [[11, 0], [18, 1.5]]
+  //       }
+  //   }
+  // }, 'mapbox-iwsstuart-44ys0zp4');
+
+  map.addSource("contours_simple", {
+    "type": "geojson",
+    "data": 'contours_simple.geojson'
+  });
+  map.addLayer({
+    "id": "contours_simple",
+    "type": "line",
+    "source": "contours_simple",
+    "layout": {
+        "line-join": "round",
+        "line-cap": "round"
+    },
+    "paint": {
+        "line-color": "#ad4a36",
+        "line-opacity": {
+        	"base": 0.5,
+      		"stops": [[10, 0.2], [14, 0.6]]
+        },
+        "line-width": {
+        	"base": 1,
+      		"stops": [[10, 0.1], [13.9, 0.2], [14, 0]]
+        }
+    }
+  }, 'mapbox-iwsstuart-44ys0zp4');
+
+  // map.addLayer({
+  //   "id": "1857_shore",
+  //   "type": "line",
+  //   "source": "1857_shore",
+  //   "layout": {
+  //       "line-join": "round",
+  //       "line-cap": "round"
+  //   },
+  //   "paint": {
+  //       "line-color": "#888",
+  //       "line-width": 4
+  //   }
+  // });
+
+	// map.setLayerZoomRange('contours', 11, 22);
+
+	$('.item-1').click(function() {
+		if ($(this).hasClass('off')) {
+			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'visible');
+			$(this).toggleClass('off');	
+		} else {
+			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'none');
+			$(this).toggleClass('off');			
+		}
+	});
+
+	$('.item-2').click(function() {
+		if ($(this).hasClass('off')) {
+			map.setLayoutProperty('springs', 'visibility', 'visible');
+			$(this).toggleClass('off');	
+		} else {
+			map.setLayoutProperty('springs', 'visibility', 'none');
+			$(this).toggleClass('off');			
+		}
+	});
+
+	$('.item-3').click(function() {
+		if ($(this).hasClass('off')) {
+			map.setLayoutProperty('1857', 'visibility', 'visible');
+			$(this).toggleClass('off');	
+		} else {
+			map.setLayoutProperty('1857', 'visibility', 'none');
+			$(this).toggleClass('off');			
+		}
+	});
+
+});
+
+// $(document).ready(function() {	
+// 	$('.item-1').click(function() {
+// 		map.removeSource("T00687");
+// 	});
+// });
+
+
+</script>
+
+</body>
+</html>
