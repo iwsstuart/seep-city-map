@@ -45,27 +45,28 @@
 		}
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
-        #panel { position:absolute; width:240px; margin-left:30px; margin-top:30px; background-color:#666; }
-        .item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }
-        .item :hover { background-color: #555; }
-        .item h5 { padding-left: 10px; line-height: 40px; }
-
+        .panel-default { position:absolute; width:240px; margin-left:30px; margin-top:30px; }
+        /*.item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }*/
+/*        .item :hover { background-color: #555; }
+*/
     </style>
 </head>
 <body>
 
 <div id='map'></div>
 
-<div id="panel">
-<div class="item item-1">
-	<h5>HISTORICAL MAP</h5>
-</div>
-<div class="item item-2">
-	<h5>SPRINGS</h5>
-</div>
-<div class="item item-3">
-	<h5>HISTORICAL SHORELINE</h5>
-</div>
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">SEEP CITY</div>
+	<div class="panel-body">
+	<p>Expore the map using the controls below.</p>
+	</div>
+
+	<ul class="list-group">
+	    <li class="list-group-item">HISTORICAL MAP</li>
+	    <li class="list-group-item">SPRINGS</li>
+	    <li class="list-group-item">HISTORICAL SHORELINE</li>
+	</ul>
 </div>
 
 <script>
