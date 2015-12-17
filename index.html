@@ -43,9 +43,34 @@
 		    -webkit-font-smoothing: antialiased;
 		    -moz-osx-font-smoothing: grayscale;
 		}
+		
+		* {
+		    -webkit-border-radius: 0 !important;
+     	    -moz-border-radius: 0 !important;
+		    border-radius: 0 !important;
+		}
+
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
         .panel-default { position:absolute; width:240px; margin-left:30px; margin-top:30px; }
+        .panel-heading h4 { font-family: "clarendon-urw-extra-narrow"; font-weight: 700; }
+        .panel-subheading { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; margin-bottom: 8px; }
+        .panel-body { padding-left: 0; padding-right: 0; }
+        .panel-body h6, .panel-body p { padding-left: 15px; }
+        .btn-3 { width: 100%; }
+        .btn-3 .btn-default { 
+        	width: 80px; 
+        	margin: auto; 
+        	border: none; 
+        	background-color: #eee; 
+        	margin-left: 0px; 
+        	font-family: "proxima-nova",sans-serif;
+			font-style: normal;
+			font-weight: 300;
+			font-size: 0.9em;
+        }
+        .btn-3 .btn-default:hover { background-color: #ddd; }
+
         /*.item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }*/
 /*        .item :hover { background-color: #555; }
 */
@@ -57,9 +82,9 @@
 
 <div class="panel panel-default">
 	<!-- Default panel contents -->
-	<div class="panel-heading">SEEP CITY</div>
+	<div class="panel-heading"><h4>SEEP CITY</h4></div>
 	<div class="panel-body">
-	<p>Expore the map using the controls below.</p>
+		<p>Expore the map using the controls below.</p>
 	</div>
 
 	<ul class="list-group">
@@ -67,6 +92,16 @@
 	    <li class="list-group-item">SPRINGS</li>
 	    <li class="list-group-item">HISTORICAL SHORELINE</li>
 	</ul>
+
+	<div class="panel-body">
+		<h6 class="panel-subheading">Historical maps</h6>
+		<div class="btn-group btn-3" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default">1852</button>
+		  <button type="button" class="btn btn-default">1857</button>
+		  <button type="button" class="btn btn-default">1869</button>
+		</div>
+	</div>
+	
 </div>
 
 <script>
