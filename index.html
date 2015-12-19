@@ -81,10 +81,28 @@
 
         .list-group-item:hover { background-color: #eee; cursor: pointer; }
         .list-group-item h5 { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; display: inline; }
-
-        .panel .glyphicon { font-size: 0.8em; display: inline; color: #ccc; }
+        
+      	.panel .glyphicon { font-size: 0.8em; display: inline; color: #ccc; }
         .on .glyphicon { color: blue; }
 
+        #tooltip { font-family: "proxima-nova",sans-serif; font-weight: 500; }
+
+        .mapboxgl-popup-content { background-color: black; color: white; padding: 10px 10px 10px; }
+        .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+		    border-top-color: black;
+		}
+		.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+		    border-top-color: black;
+		}
+		.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+		    border-top-color: black;
+		}
+		.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+		    border-top-color: black;
+		}
+		.mapboxgl-popup-tip {
+		    border: 6px solid transparent;
+		}
 
 
         /*.item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }*/
@@ -114,6 +132,11 @@
 		  <button type="button" class="btn btn-default">1869</button>
 		</div>
 	</div>
+
+	<ul class="list-group">
+	    <li class="list-group-item satellite"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span><h5>&nbsp;&nbsp;Satellite</h5></li>	
+	    <li class="list-group-item streets"><span class="glyphicon glyphicon-road" aria-hidden="true"></span><h5>&nbsp;&nbsp;Streets</h5></li>	
+	</ul>
 	
 </div>
 
@@ -210,7 +233,7 @@ map.on('style.load', function() {
 	map.setPaintProperty('sf-water-coastline-buffer6', 'fill-opacity', 0, 'grayscale');
 	map.setPaintProperty('sf-water-coastline-buffer5', 'fill-opacity', 0, 'grayscale');
 	map.setPaintProperty('sf-water-coastline', 'fill-color', '#888', 'grayscale');
-	map.setPaintProperty('sf-water-coastline-outline', 'line-color', '#aaa', 'grayscale');
+	map.setPaintProperty('sf-water-coastline-outline', 'line-color', '#999', 'grayscale');
 	map.setPaintProperty('hillshade_shadow_med', 'fill-color', '#333', 'grayscale');
 	map.setPaintProperty('hillshade_shadow_faint', 'fill-color', '#555', 'grayscale');
 	map.setPaintProperty('hillshade_shadow_med', 'fill-color', '#333', 'grayscale');
@@ -220,9 +243,34 @@ map.on('style.load', function() {
 	map.setPaintProperty('phys-waterbodies', 'fill-color', '#b3b3fc', 'grayscale');
 	map.setPaintProperty('phys-waterbodies', 'fill-outline-color', 'white', 'grayscale');
 
+	// map.setPaintProperty('road-rail-tracks', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-rail', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-motorway', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-trunk', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-main', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-street_limited', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-motorway_link', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-service-driveway', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-street-low-zoom', 'fill-opacity', 0.2, 'grayscale');
+	// map.setPaintProperty('road-path', 'fill-opacity', 0.2, 'grayscale');
+
+	map.setPaintProperty('road-rail-tracks', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-rail', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-motorway', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-trunk', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-main', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-street_limited', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-motorway_link', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-service-driveway', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-street-low-zoom', 'line-color', '#777', 'grayscale');
+	map.setPaintProperty('road-path', 'line-color', '#777', 'grayscale');
+
 	$('.highlight').click(function() {
 		if ($(this).hasClass('on')) {
 			map.removeClass('grayscale');
+			map.setPaintProperty('sf-water-coastline-buffer6', 'fill-opacity', 1);
+			map.setPaintProperty('sf-water-coastline-buffer5', 'fill-opacity', 1);
+			map.setPaintProperty('phys-waterbodies', 'fill-outline-color', '#bcbcc5');
 			$(this).toggleClass('on');
 		} else {
 			map.addClass('grayscale');
@@ -261,13 +309,74 @@ map.on('style.load', function() {
 		}
 	});
 
+	$('.satellite').click(function() {
+		if ($(this).hasClass('on')) {
+			map.setLayoutProperty('mapbox-mapbox-satellite', 'visibility', 'none');
+			$(this).toggleClass('on');	
+		} else {
+			map.setLayoutProperty('mapbox-mapbox-satellite', 'visibility', 'visible');
+			$(this).toggleClass('on');			
+		}
+	});
+
+	$('.streets').click(function() {
+		if ($(this).hasClass('on')) {
+			map.setLayoutProperty('road-rail-tracks', 'visibility', 'none');
+			map.setLayoutProperty('road-rail', 'visibility', 'none');
+			map.setLayoutProperty('road-motorway', 'visibility', 'none');
+			map.setLayoutProperty('road-trunk', 'visibility', 'none');
+			map.setLayoutProperty('road-main', 'visibility', 'none');
+			map.setLayoutProperty('road-street_limited', 'visibility', 'none');
+			map.setLayoutProperty('road-motorway_link', 'visibility', 'none');
+			map.setLayoutProperty('road-service-driveway', 'visibility', 'none');
+			map.setLayoutProperty('road-street-low-zoom', 'visibility', 'none');
+			map.setLayoutProperty('road-path', 'visibility', 'none');
+			$(this).toggleClass('on');
+		} else {
+			map.setLayoutProperty('road-rail-tracks', 'visibility', 'visible');
+			map.setLayoutProperty('road-rail', 'visibility', 'visible');
+			map.setLayoutProperty('road-motorway', 'visibility', 'visible');
+			map.setLayoutProperty('road-trunk', 'visibility', 'visible');
+			map.setLayoutProperty('road-main', 'visibility', 'visible');
+			map.setLayoutProperty('road-street_limited', 'visibility', 'visible');
+			map.setLayoutProperty('road-motorway_link', 'visibility', 'visible');
+			map.setLayoutProperty('road-service-driveway', 'visibility', 'visible');
+			map.setLayoutProperty('road-street-low-zoom', 'visibility', 'visible');
+			map.setLayoutProperty('road-path', 'visibility', 'visible');
+			$(this).toggleClass('on');			
+		}
+	});
+
 });
 
-// $(document).ready(function() {	
-// 	$('.item-1').click(function() {
-// 		map.removeSource("T00687");
-// 	});
+// map.on('click', function (e) {
+//     var tooltip = new mapboxgl.Popup()
+//         .setLngLat(e.lngLat)
+//         .setHTML('<h6>Hello World!</h6>')
+//         .addTo(map);
+//         console.log(map.getLayer('phys-waterbodies'));
 // });
+
+map.on('mousemove', function (e) {
+	if (map.hasClass('grayscale')) {
+	    map.featuresAt(e.point, {layer: 'phys-waterbodies', radius: 5}, function (err, features) {
+	        map.getCanvas().style.cursor = (!err && features.length) ? 'pointer' : '';
+	    });
+	}
+});		
+
+map.on('click', function (e) {
+	if (map.hasClass('grayscale')) {
+		map.featuresAt(e.point, {radius: 5, layer: 'phys-waterbodies'}, function (err, features) {
+	        if (err) throw err;
+	        console.log(features);
+	    	var tooltip = new mapboxgl.Popup({closeButton:false})
+		        .setLngLat(e.lngLat)
+		        .setHTML('<h6 id="tooltip">' + features[0].properties.BODY_TYPE + '</h6>')
+		        .addTo(map);
+	    });
+	}
+});
 
 
 </script>
