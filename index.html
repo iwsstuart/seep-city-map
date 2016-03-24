@@ -20,6 +20,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script src="https://use.typekit.net/bwy0xzf.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -45,9 +47,9 @@
 		}
 		
 		* {
-		    -webkit-border-radius: 0 !important;
+/*		    -webkit-border-radius: 0 !important;
      	    -moz-border-radius: 0 !important;
-		    border-radius: 0 !important;
+		    border-radius: 0 !important;*/
 		}
 
 		button:active, button:focus, button:hover {
@@ -56,36 +58,137 @@
 		}
 
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-        .panel-default { position:absolute; width:240px; margin-left:30px; margin-top:30px; }
-        .panel-heading h4 { font-family: "clarendon-urw-extra-narrow"; font-weight: 700; }
-        .panel-subheading { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; margin-bottom: 8px; }
-        .panel-body { padding-left: 0; padding-right: 0; }
+        
+        #map { 
+        	position:absolute; 
+        	top:0; 
+        	bottom:0; 
+        	width:100%; 
+        }
+
+        .panel { 
+        	box-shadow: 0 0 3px rgba(255,255,255,0.8);
+        	border: none;
+		}
+        .panel-default { 
+        	position:absolute; 
+        	width:240px;
+        	height: 100%;
+        	overflow: scroll;
+        	z-index: 100;
+        	color: #ccc;
+        	background-color: #333;
+        	border-radius: 0;
+        	margin-bottom: 0;
+        }
+        .panel-default > .panel-heading { 
+        	background-color: #2a2a2a;
+        	border-color: #666;
+        	border-radius: 0;
+        }
+        .panel-heading h4 { 
+        	font-family: "clarendon-urw-extra-narrow"; 
+        	font-weight: 700;
+        	color: white; 
+        }
+        .panel-subheading {
+        	font-family: "clarendon-urw-extra-narrow";
+        	font-weight: 400; 
+        	margin-bottom: 8px; 
+        }
+        .panel-body { 
+        	padding-left: 0; 
+        	padding-right: 0; 
+        }
         .panel-body h5, .panel-body p { padding-left: 15px; }
-        .btn-3 { width: 100%; }
-        .btn-3 .btn-default { 
-        	width: 80px; 
-        	margin: auto; 
-        	border: none; 
-        	background-color: #eee; 
-        	margin-left: 0px; 
+
+
+		.list-group { 
+			margin-bottom: -1px; 
+		}
+		.list-group-item { 
+			background-color: #444; 
+			border-color: #666; 
+		}
+		.items .list-group-item.control { 
+			background-color: #444; 
+			border-color: #444;
+			border-top-color: #333; 
+			padding: 6px 30px;
+		}		
+        .items .list-group-item.layer {
+			background-color: #333;
+			border-color: #444;
+		}
+        .list-group-item:hover { 
+        	background-color: #666; 
+        	cursor: pointer; 
+        }
+        .items .list-group-item.layer:hover {
+			background-color: #666;
+		}
+       	.items .list-group-item.control:hover { 
+/*			background-color: #333; 
+*/			cursor: inherit; 
+		}
+        .list-group-item h5 { 
+        	font-family: "clarendon-urw-extra-narrow";
+        	font-weight: 400; 
+        	display: inline; 
+        }
+        .list-group-item h6 { 
         	font-family: "proxima-nova",sans-serif;
 			font-style: normal;
-			font-weight: 300;
+			font-weight: 400;
+			font-size: 0.9em; 
+			display: inline; 
+		}
+
+		#highlights {
+			border-top: 2px solid #666;
+			background-color: #444;
+		}
+		#highlights ul {
+			padding: 10px 0px;
+		}
+		#highlights li { 
+			font-family: "proxima-nova",sans-serif;
+			font-style: normal;
+			font-weight: 400;
 			font-size: 0.9em;
+			line-height: 30px;
+			padding: 0 20px; 
+		}
+		#highlights li:hover {
+			background-color: #333;
+			cursor: pointer;
+		}
+        #highlights li span { font-size: 0.7em; }
+
+        #description {
+        	background-color: #333;
+        	font-family: "proxima-nova",sans-serif;
+			font-style: normal;
+			font-weight: 700;
+			font-size: 1em;
+			letter-spacing: 0.25px;
+			color: white;
+			border-top: 2px solid #666;
+			padding: 15px 20px;
         }
-        .btn-3 .btn-default:hover { background-color: #ddd; outline: none; }
-		.btn-3 .btn-default:active { box-shadow: none; color: white; background-color: #aaa; font-weight: 500; }
+      	
+      	.panel .on { color: white; }
+      	.panel .glyphicon { 
+      		font-size: 0.8em; 
+      		display: inline; 
+      		color: #aaa; 
+      	}
+        .panel .on .glyphicon { color: white; }
+        .panel .header { color: #eee;}
+        .panel .header .glyphicon { color: #ddd; }
 
-		.btn-3 .on, .btn-3 .on:hover { color: white; background-color: #aaa; font-weight: 500; }
-
-        .list-group-item:hover { background-color: #eee; cursor: pointer; }
-        .list-group-item h5 { font-family: "clarendon-urw-extra-narrow"; font-weight: 400; display: inline; }
-        
-      	.panel .glyphicon { font-size: 0.8em; display: inline; color: #ccc; }
-        .on .glyphicon { color: blue; }
-
-        #tooltip { font-family: "proxima-nova",sans-serif; font-weight: 500; }
+        .mapboxgl-popup-content h6 { font-family: "proxima-nova", sans-serif; font-weight: 700; color: #999; }
+        .mapboxgl-popup-content h5 { font-family: "clarendon-urw-extra-narrow", serif; font-weight: 400; }
 
         .mapboxgl-popup-content { background-color: black; color: white; padding: 10px 10px 10px; }
         .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
@@ -105,9 +208,44 @@
 		}
 
 
-        /*.item { margin-bottom: 1px; height: 40px; background-color: #333; color: white; font-family: sans-serif; }*/
-/*        .item :hover { background-color: #555; }
-*/
+		.control { display: none; }		
+		.control.active { display: block; }
+		.opacity-control { 
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.opacity-bar {
+			height: 4px;
+			width: 100px;
+			position: absolute;
+			top: calc(50% - 2px);
+			background-color: #666;
+		}
+		.handle {
+			height: 8px;
+			width: 4px;
+			position: absolute;
+			top: calc(50% - 4px);
+			background-color: #ccc;
+			border-radius: 3px;	
+		}
+		.handle:hover { 
+			cursor: pointer; 
+			cursor: ew-resize; 
+		}
+		.opacity-value {
+			display: inline-block;
+			margin-left: 110px;
+		}
+		
+		.num-text {
+			font-size: 0.8em;
+			color: white;
+			padding-bottom: 4px;
+		}
+
+		.items { display: none; }
+
     </style>
 </head>
 <body>
@@ -115,117 +253,181 @@
 <div id='map'></div>
 
 <div class="panel panel-default">
+
 	<!-- Default panel contents -->
 	<div class="panel-heading"><h4>SEEP CITY</h4></div>
 
 	<ul class="list-group">
-	    <li class="list-group-item item-1 on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Springs</h5></li>
-	    <li class="list-group-item item-2 on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historical shoreline</h5></li>
-	    <li class="list-group-item item-3 highlight"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h5>&nbsp;&nbsp;Highlight water</h5></li>	
+	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Today's natural water</h5></li>	
+	    <ul class="list-group items">
+		    <li id="springs" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Springs</h6></li>	
+		    <li id="lakes-creeks" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Lakes, creeks & marshes</h6></li>
+	    </ul>			
 	</ul>
-
-	<div class="panel-body">
-		<h5 class="panel-subheading">Historical maps</h5>
-		<div class="btn-group btn-3" role="group" aria-label="...">
-		  <button type="button" class="btn btn-default">1852</button>
-		  <button type="button" class="btn btn-default raster-2">1857</button>
-		  <button type="button" class="btn btn-default">1869</button>
-		</div>
-	</div>
 
 	<ul class="list-group">
-	    <li class="list-group-item satellite"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span><h5>&nbsp;&nbsp;Satellite</h5></li>	
-	    <li class="list-group-item streets"><span class="glyphicon glyphicon-road" aria-hidden="true"></span><h5>&nbsp;&nbsp;Streets</h5></li>	
+	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historic water</h5></li>	
+	    <ul class="list-group items">
+		    <li id="historic-springs" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Known springs</h6></li>	
+		    <li id="historic-lakes-creeks" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Lakes, creeks, sloughs & marshes</h6></li>
+		    <li id="historic-bay" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Bay (today's shoreline dotted)</h6></li>
+		    <li id="dune-ponds" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Dune ponds from saturating rains</h6></li>
+		    <li id="historic-reservoirs" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Former reservoirs & tanks</h6></li>
+	    </ul>			
 	</ul>
-	
+
+	<ul class="list-group">
+	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Development</h5></li>	
+	    <ul class="list-group items">
+		    <li id="contours" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Today's contours (land shapes)</h6></li>	
+		    <li id="road" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Streets, piers & bridges</h6></li>	
+		    <li id="reservoirs" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Reservoirs & tanks</h6></li>
+		    <li id="bay-inlets" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Bay & artificial inlets</h6></li>
+		    <li id="bay-fill" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Bay fill</h6></li>
+		    <li id="waste-treatment" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Waste treatment</h6></li>
+	    </ul>			
+	</ul>
+
+	<ul class="list-group">
+	    <li class="list-group-item header comparisons"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Comparisons</h5></li>	
+	    <ul class="list-group items">
+		    <li id="1852-map" class="list-group-item layer comparison"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;1852 Coast Survey</h6></li>
+		    <li id="1852-map-opacity" class="list-group-item control"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+		    <div class="opacity-control">
+		    	<div class="opacity-bar">
+		    		<div class="handle"></div>
+		    	</div>
+		    	<div class="opacity-value">
+		    		<p class="num-text">0</p>
+		    	</div>
+		    </div>	
+		    </li>
+		    <li id="1857-map" class="list-group-item layer comparison"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;1857 Coast Survey</h6>
+		    <li id="1857-map-opacity" class="list-group-item control"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+		    <div class="opacity-control">
+		    	<div class="opacity-bar">
+		    		<div class="handle"></div>
+		    	</div>
+			    <div class="opacity-value">
+			    	<p class="num-text">0</p>
+			    </div>	
+		    </div>
+	    	</li>
+	    	</li>
+		    <li id="1869-map" class="list-group-item layer comparison"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;1869 Coast Survey</h6></li>
+		    <li id="1869-map-opacity" class="list-group-item control"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+		    <div class="opacity-control">
+		    	<div class="opacity-bar">
+		    		<div class="handle"></div>
+		    	</div>
+		    </div>
+		    <div class="opacity-value">
+		    	<p class="num-text">0</p>
+		    </div>	
+		    </li>
+		    <li id="mapbox-mapbox-satellite" class="list-group-item layer comparison"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span><h6>&nbsp;&nbsp;Satellite overlay</h6>
+		    <li id="mapbox-mapbox-satellite-opacity" class="list-group-item control"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+		    <div class="opacity-control">
+		    	<div class="opacity-bar">
+		    		<div class="handle"></div>
+		    	</div>
+		    	<div class="opacity-value">
+			    	<p class="num-text">0</p>
+			    </div>	
+		    </div>		    
+		    </li>
+		    </li>
+	    </ul>			
+	</ul>
+
+	<div id="highlights">
+		<ul>
+			<li><span class="fa fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;Significant springs</li>
+			<li><span class="fa fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;Bay & marsh fill</li>
+			<li id="tidal-water"><span class="fa fa-circle fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;All tidal water</li>
+			<li id="original-shore"><span class="fa fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;Original shore</li>
+			<li><span class="fa fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;Watershed boundaries</li>
+			<li><span class="fa fa-circle-thin" aria-hidden="true"></span>&nbsp;&nbsp;Sewershed boundaries</li>
+		</ul>
+	</div>
+
+	<div id="description">
+		<p>Some sort of intro or explanatory text could go here if we want...</p>
+	</div>
+
 </div>
 
 <script>
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiaXdzc3R1YXJ0IiwiYSI6InNaNzMzVXMifQ.OFDL1zM5OjRUHcL_Y5htCA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/iwsstuart/cihwgul0a00kb95lyu8x6dn1q', //stylesheet location
     minZoom: 11,
     maxBounds: [[-122.618025, 37.660094],[-122.283068, 37.857349]]
-    // center: [-74.50, 40], // starting position
-    // zoom: 9 // starting zoom
 });
 
+
 map.on('style.load', function() {
-  // map.addSource("1857_shore", {
-  //   "type": "geojson",
-  //   "data": '1857.geojson'
-  // });
-  // map.addSource("springs", {
-  //   "type": "geojson",
-  //   "data": 'springs.geojson'
-  // });
+	// map.addSource("1857_shore", {
+	//   "type": "geojson",
+	//   "data": '1857.geojson'
+	// });
+	// map.addSource("springs", {
+	//   "type": "geojson",
+	//   "data": 'springs.geojson'
+	// });
 
-  // map.addSource("contours", {
-  //   "type": "geojson",
-  //   "data": 'contours.geojson'
-  // });
-  // map.addLayer({
-  //   "id": "contours",
-  //   "type": "line",
-  //   "source": "contours",
-  //   "layout": {
-  //       "line-join": "round",
-  //       "line-cap": "round"
-  //   },
-  //   "paint": {
-  //       "line-color": "#ad4a36",
-  //       "line-opacity": 0.5,
-  //       "line-width": {
-  //       	"base": 1,
-  //     		"stops": [[11, 0], [18, 1.5]]
-  //       }
-  //   }
-  // }, 'mapbox-iwsstuart-44ys0zp4');
+	// map.addSource("contours", {
+	//   "type": "geojson",
+	//   "data": 'contours.geojson'
+	// });
+	// map.addLayer({
+	//   "id": "contours",
+	//   "type": "line",
+	//   "source": "contours",
+	//   "layout": {
+	//       "line-join": "round",
+	//       "line-cap": "round"
+	//   },
+	//   "paint": {
+	//       "line-color": "#ad4a36",
+	//       "line-opacity": 0.5,
+	//       "line-width": {
+	//       	"base": 1,
+	//     		"stops": [[11, 0], [18, 1.5]]
+	//       }
+	//   }
+	// }, 'mapbox-iwsstuart-44ys0zp4');
 
-  map.setCenter([-122.451487, 37.756889]);
-  map.setZoom(11.5);
+	map.setCenter([-122.451487, 37.756889]);
+	map.setZoom(11.5);
 
-  map.addSource("contours_simple", {
-    "type": "geojson",
-    "data": 'contours_simple.geojson'
-  });
-  map.addLayer({
-    "id": "contours_simple",
-    "type": "line",
-    "source": "contours_simple",
-    "layout": {
-        "line-join": "round",
-        "line-cap": "round"
-    },
-    "paint": {
-        "line-color": "#ad4a36",
-        "line-opacity": {
-        	"base": 0.5,
-      		"stops": [[10, 0.2], [14, 0.6]]
-        },
-        "line-width": {
-        	"base": 1,
-      		"stops": [[10, 0.1], [13.9, 0.2], [14, 0]]
-        }
-    }
-  }, 'mapbox-iwsstuart-44ys0zp4');
+	map.addSource("contours_simple", {
+	"type": "geojson",
+	"data": 'contours_simple.geojson'
+	});
+	map.addLayer({
+	"id": "contours_simple",
+	"type": "line",
+	"source": "contours_simple",
+	"layout": {
+	    "line-join": "round",
+	    "line-cap": "round"
+	},
+	"paint": {
+	    "line-color": "#ad4a36",
+	    "line-opacity": {
+	    	"base": 0.5,
+	  		"stops": [[10, 0.2], [14, 0.6]]
+	    },
+	    "line-width": {
+	    	"base": 1,
+	  		"stops": [[10, 0.1], [13.9, 0.2], [14, 0]]
+	    }
+	}
+}, 'mapbox-iwsstuart-44ys0zp4');
 
-  // map.addLayer({
-  //   "id": "1857_shore",
-  //   "type": "line",
-  //   "source": "1857_shore",
-  //   "layout": {
-  //       "line-join": "round",
-  //       "line-cap": "round"
-  //   },
-  //   "paint": {
-  //       "line-color": "#888",
-  //       "line-width": 4
-  //   }
-  // });
-
-	// map.setLayerZoomRange('contours', 11, 22);
 
 	map.setPaintProperty('background', 'background-color', '#666', 'grayscale');
 	map.setPaintProperty('contours_simple', 'line-color', '#999', 'grayscale');
@@ -244,18 +446,6 @@ map.on('style.load', function() {
 	map.setPaintProperty('phys-waterbodies', 'fill-outline-color', 'white', 'grayscale');
 	map.setPaintProperty('tidal-marshes-sf', 'fill-color', '#5d5d5d', 'grayscale');
 	map.setPaintProperty('inlets', 'fill-color', '#888', 'grayscale');
-
-	// map.setPaintProperty('road-rail-tracks', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-rail', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-motorway', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-trunk', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-main', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-street_limited', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-motorway_link', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-service-driveway', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-street-low-zoom', 'fill-opacity', 0.2, 'grayscale');
-	// map.setPaintProperty('road-path', 'fill-opacity', 0.2, 'grayscale');
-
 	map.setPaintProperty('road-rail-tracks', 'line-color', '#777', 'grayscale');
 	map.setPaintProperty('road-rail', 'line-color', '#777', 'grayscale');
 	map.setPaintProperty('road-motorway', 'line-color', '#777', 'grayscale');
@@ -266,98 +456,85 @@ map.on('style.load', function() {
 	map.setPaintProperty('road-service-driveway', 'line-color', '#777', 'grayscale');
 	map.setPaintProperty('road-street-low-zoom', 'line-color', '#777', 'grayscale');
 	map.setPaintProperty('road-path', 'line-color', '#777', 'grayscale');
-
-	$('.highlight').click(function() {
-		if ($(this).hasClass('on')) {
-			map.removeClass('grayscale');
-			map.setPaintProperty('sf-water-coastline-buffer6', 'fill-opacity', 1);
-			map.setPaintProperty('sf-water-coastline-buffer5', 'fill-opacity', 1);
-			map.setPaintProperty('phys-waterbodies', 'fill-outline-color', '#bcbcc5');
-			$(this).toggleClass('on');
-		} else {
-			map.addClass('grayscale');
-			$(this).toggleClass('on');			
-		}
-	});
-
-	$('.item-1').click(function() {
-		if ($(this).hasClass('on')) {
-			map.setLayoutProperty('springs', 'visibility', 'none');
-			$(this).toggleClass('on');
-		} else {
-			map.setLayoutProperty('springs', 'visibility', 'visible');
-			$(this).toggleClass('on');			
-		}
-	});
-
-	$('.item-2').click(function() {
-		if ($(this).hasClass('on')) {
-			map.setLayoutProperty('1857', 'visibility', 'none');
-			$(this).toggleClass('on');	
-		} else {
-			map.setLayoutProperty('1857', 'visibility', 'visible');
-			$(this).toggleClass('on');			
-		}
-	});
-
-
-	$('.raster-2').click(function() {
-		if ($(this).hasClass('on')) {
-			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'none');
-			$(this).toggleClass('on');	
-		} else {
-			map.setLayoutProperty('mapbox-iwsstuart-44ys0zp4', 'visibility', 'visible');
-			$(this).toggleClass('on');			
-		}
-	});
-
-	$('.satellite').click(function() {
-		if ($(this).hasClass('on')) {
-			map.setLayoutProperty('mapbox-mapbox-satellite', 'visibility', 'none');
-			$(this).toggleClass('on');	
-		} else {
-			map.setLayoutProperty('mapbox-mapbox-satellite', 'visibility', 'visible');
-			$(this).toggleClass('on');			
-		}
-	});
-
-	$('.streets').click(function() {
-		if ($(this).hasClass('on')) {
-			map.setLayoutProperty('road-rail-tracks', 'visibility', 'none');
-			map.setLayoutProperty('road-rail', 'visibility', 'none');
-			map.setLayoutProperty('road-motorway', 'visibility', 'none');
-			map.setLayoutProperty('road-trunk', 'visibility', 'none');
-			map.setLayoutProperty('road-main', 'visibility', 'none');
-			map.setLayoutProperty('road-street_limited', 'visibility', 'none');
-			map.setLayoutProperty('road-motorway_link', 'visibility', 'none');
-			map.setLayoutProperty('road-service-driveway', 'visibility', 'none');
-			map.setLayoutProperty('road-street-low-zoom', 'visibility', 'none');
-			map.setLayoutProperty('road-path', 'visibility', 'none');
-			$(this).toggleClass('on');
-		} else {
-			map.setLayoutProperty('road-rail-tracks', 'visibility', 'visible');
-			map.setLayoutProperty('road-rail', 'visibility', 'visible');
-			map.setLayoutProperty('road-motorway', 'visibility', 'visible');
-			map.setLayoutProperty('road-trunk', 'visibility', 'visible');
-			map.setLayoutProperty('road-main', 'visibility', 'visible');
-			map.setLayoutProperty('road-street_limited', 'visibility', 'visible');
-			map.setLayoutProperty('road-motorway_link', 'visibility', 'visible');
-			map.setLayoutProperty('road-service-driveway', 'visibility', 'visible');
-			map.setLayoutProperty('road-street-low-zoom', 'visibility', 'visible');
-			map.setLayoutProperty('road-path', 'visibility', 'visible');
-			$(this).toggleClass('on');			
-		}
-	});
-
 });
 
-// map.on('click', function (e) {
-//     var tooltip = new mapboxgl.Popup()
-//         .setLngLat(e.lngLat)
-//         .setHTML('<h6>Hello World!</h6>')
-//         .addTo(map);
-//         console.log(map.getLayer('phys-waterbodies'));
-// });
+
+function layersOn() {
+	if (layerId == "road") {
+		map.setLayoutProperty('road-rail-tracks', 'visibility', 'visible');
+		map.setLayoutProperty('road-rail', 'visibility', 'visible');
+		map.setLayoutProperty('road-motorway', 'visibility', 'visible');
+		map.setLayoutProperty('road-trunk', 'visibility', 'visible');
+		map.setLayoutProperty('road-main', 'visibility', 'visible');
+		map.setLayoutProperty('road-street_limited', 'visibility', 'visible');
+		map.setLayoutProperty('road-motorway_link', 'visibility', 'visible');
+		map.setLayoutProperty('road-service-driveway', 'visibility', 'visible');
+		map.setLayoutProperty('road-street-low-zoom', 'visibility', 'visible');
+		map.setLayoutProperty('road-path', 'visibility', 'visible');
+	}
+}
+
+function layersOff() {
+	if (layerId == "road") {
+		map.setLayoutProperty('road-rail-tracks', 'visibility', 'none');
+		map.setLayoutProperty('road-rail', 'visibility', 'none');
+		map.setLayoutProperty('road-motorway', 'visibility', 'none');
+		map.setLayoutProperty('road-trunk', 'visibility', 'none');
+		map.setLayoutProperty('road-main', 'visibility', 'none');
+		map.setLayoutProperty('road-street_limited', 'visibility', 'none');
+		map.setLayoutProperty('road-motorway_link', 'visibility', 'none');
+		map.setLayoutProperty('road-service-driveway', 'visibility', 'none');
+		map.setLayoutProperty('road-street-low-zoom', 'visibility', 'none');
+		map.setLayoutProperty('road-path', 'visibility', 'none');
+	}
+}
+
+$('#highlights #tidal-water').click(function() {
+	if ($(this).hasClass('on')) {
+		map.removeClass('grayscale');
+		map.setPaintProperty('sf-water-coastline-buffer6', 'fill-opacity', 1);
+		map.setPaintProperty('sf-water-coastline-buffer5', 'fill-opacity', 1);
+		map.setPaintProperty('phys-waterbodies', 'fill-outline-color', '#bcbcc5');
+		$(this).toggleClass('on');
+		$('#tidal-water span').toggleClass('fa-circle-thin');	
+	} else {
+		map.addClass('grayscale');
+		$(this).toggleClass('on');
+		$('#tidal-water span').toggleClass('fa-circle-thin');			
+	}
+});
+
+$('#highlights #original-shore').click(function() {
+	if ($(this).hasClass('on')) {
+		map.removeClass('grayscale');
+		map.setPaintProperty('sf-water-coastline-buffer6', 'fill-opacity', 1);
+		map.setPaintProperty('sf-water-coastline-buffer5', 'fill-opacity', 1);
+		map.setPaintProperty('phys-waterbodies', 'fill-outline-color', '#bcbcc5');
+		$(this).toggleClass('on');
+		$('#tidal-water span').toggleClass('fa-circle-thin');	
+	} else {
+		map.addClass('grayscale');
+		$(this).toggleClass('on');
+		$('#tidal-water span').toggleClass('fa-circle-thin');			
+	}
+});
+
+$('#labels').click(function() {
+	if ($(this).hasClass('on')) {
+		map.setLayoutProperty('place_label_city_large_n', 'visibility', 'none');
+		map.setLayoutProperty('place_label_neighborhood', 'visibility', 'none');
+		map.setLayoutProperty('road-label-large', 'visibility', 'none');
+		map.setLayoutProperty('road-label-med', 'visibility', 'none');
+		map.setLayoutProperty('road-label-sm', 'visibility', 'none');
+	} else {
+		map.setLayoutProperty('place_label_city_large_n', 'visibility', 'visible');
+		map.setLayoutProperty('place_label_neighborhood', 'visibility', 'visible');			
+		map.setLayoutProperty('road-label-large', 'visibility', 'visible');
+		map.setLayoutProperty('road-label-med', 'visibility', 'visible');
+		map.setLayoutProperty('road-label-sm', 'visibility', 'visible');
+	}
+});
+
 
 map.on('mousemove', function (e) {
 	if (map.hasClass('grayscale')) {
@@ -374,12 +551,105 @@ map.on('click', function (e) {
 	        console.log(features);
 	    	var tooltip = new mapboxgl.Popup({closeButton:false})
 		        .setLngLat(e.lngLat)
-		        .setHTML('<h6 id="tooltip">' + features[0].properties.BODY_TYPE + '</h6>')
+		        .setHTML('<h6 id="tooltip">' + features[0].properties.BODY_TYPE + '</h6>'
+		        	+ '<h5>' + features[0].properties.BODY_NAME + '</h5>')
 		        .addTo(map);
 	    });
 	}
 });
 
+$('.header').click(function() {
+	var group = $(this).parent();
+	group.children('ul').toggle();
+	group.children('.header').children('span').toggleClass('glyphicon-menu-right');	
+	group.children('.header').children('span').toggleClass('glyphicon-menu-down');	
+});
+
+var layerId, controlId;
+
+$('.items li.layer').click(function() {
+	layerId = $(this).attr('id');	
+	if ($(this).hasClass('on')) {
+		$(this).toggleClass('on');
+		$(this).children('span').toggleClass('glyphicon-ban-circle');
+		$(this).children('span').toggleClass('glyphicon-ok-circle');
+		layersOff();
+		// var layersLength = map.style.stylesheet.layers.length;
+		// for (i = 0; i < layersLength; i++) {
+		// 	var layerStr = map.style.stylesheet.layers[i].id;
+		// 	if (layerStr.startsWith(layerId)) {
+		// 		map.setLayoutProperty(layerStr, 'visibility', 'none');
+		// 	}
+		// }		
+		if ($(this).hasClass('comparison')) {
+			map.setLayoutProperty(layerId, 'visibility', 'none');
+			var startOpacity = map.getPaintProperty(layerId, 'raster-opacity').toFixed(2);
+			startLeft = startOpacity * sliderWidth;
+			controlId = "#" + layerId + "-opacity";
+			$(controlId).toggleClass('active');	
+		}		
+	} else {
+		$(this).toggleClass('on');
+		$(this).children('span').toggleClass('glyphicon-ban-circle');
+		$(this).children('span').toggleClass('glyphicon-ok-circle');
+		layersOn();	
+		// var layersLength = map.style.stylesheet.layers.length;
+		// for (i = 0; i < layersLength; i++) {
+		// 	var layerStr = map.style.stylesheet.layers[i].id;
+		// 	if (layerStr.startsWith(layerId)) {
+		// 		console.log(layerStr);
+		// 		map.setLayoutProperty(layerStr, 'visibility', 'visible');
+		// 	}
+		// }
+		if ($(this).hasClass('comparison')) {
+			map.setLayoutProperty(layerId, 'visibility', 'visible');
+			controlId = "#" + layerId + "-opacity";
+			var startOpacity = map.getPaintProperty(layerId, 'raster-opacity').toFixed(2);
+			startLeft = startOpacity * sliderWidth;
+			$(controlId).toggleClass('active');
+			$(controlId + ' .handle').css('left', startLeft + 'px');
+			$(controlId + ' .num-text').html(startOpacity);	
+		}
+	}		
+});
+
+var handle, start = false, startLeft;
+var sliderWidth = $('.opacity-bar').width(), handleWidth = $('.handle').width();
+var opacityText;
+
+$('.items li.control').mouseover(function() {
+	layerId = $(this).attr('id').replace('-opacity', '');
+	$(this).toggleClass('current');
+});
+$('.items li.control').mouseout(function() {
+	$(this).toggleClass('current');
+});
+
+document.onmousemove = function(e) {
+	if (!start) return;
+    // Adjust control.
+    handle.style.left = Math.max(0, Math.min(sliderWidth - 4, startLeft + parseInt(e.clientX, 10) - start)) + 'px';
+    // Adjust opacity.
+	map.setPaintProperty(layerId, 'raster-opacity', handle.offsetLeft / (sliderWidth - 4));
+	var opacityVal = parseFloat(map.getPaintProperty(layerId, 'raster-opacity')).toFixed(2);
+	if (opacityVal == 1 || opacityVal == 0) { 
+		opacityVal = parseInt(opacityVal); 
+	}
+	$(opacityText).html(opacityVal);
+};
+
+$('.handle').mousedown(function(e) {
+	handle = this;
+	opacityText = $('.current p');
+	// console.log($(this).parents('.list-group-item'));
+	start = parseInt(e.clientX, 10);
+	startLeft = this.offsetLeft;
+	// layerId = $(this).parents('.list-group-item').attr('id').replace('-opacity','');	
+});
+
+document.onmouseup = function(e) {
+    start = null;
+};
 
 </script>
 
