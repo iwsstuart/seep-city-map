@@ -85,17 +85,21 @@
         	background-color: #2a2a2a;
         	border-color: #666;
         	border-radius: 0;
+        	padding: 16px 15px;
         }
         .panel-heading h4 { 
         	font-family: "clarendon-urw-extra-narrow"; 
         	font-weight: 700;
-        	color: white; 
+        	color: white;
+        	margin-bottom: 6px; 
         }
-        .panel-subheading {
-        	font-family: "clarendon-urw-extra-narrow";
-        	font-weight: 400; 
-        	margin-bottom: 8px; 
-        }
+        .panel-heading h5 { 
+        	font-family: "proxima-nova",sans-serif;
+        	font-weight: 500;
+      		font-size: .95em;
+        	color: #ddd; 
+        }        
+
         .panel-body { 
         	padding-left: 0; 
         	padding-right: 0; 
@@ -108,7 +112,18 @@
 		}
 		.list-group-item { 
 			background-color: #444; 
-			border-color: #666; 
+			border-color: #666;
+			height: 36px;
+			padding: 6px 15px; 
+		}
+		.ungrouped {
+			padding: 7px 0;
+			background-color: #444; 
+		}
+		.ungrouped .list-group-item {
+			border: none;
+			height: 32px;
+			padding: 5px 20px;
 		}
 		.items .list-group-item.control { 
 			background-color: #444; 
@@ -119,6 +134,8 @@
         .items .list-group-item.layer {
 			background-color: #333;
 			border-color: #444;
+			height: 32px;
+			padding: 4px 20px; 			
 		}
         .list-group-item:hover { 
         	background-color: #666; 
@@ -133,8 +150,10 @@
 		}
         .list-group-item h5 { 
         	font-family: "clarendon-urw-extra-narrow";
-        	font-weight: 400; 
-        	display: inline; 
+        	font-weight: 400;
+        	font-size: 0.95em; 
+        	display: inline;
+        	letter-spacing: .3px;
         }
         .list-group-item h6 { 
         	font-family: "proxima-nova",sans-serif;
@@ -143,9 +162,16 @@
 			font-size: 0.9em; 
 			display: inline; 
 		}
+		.ungrouped .list-group-item h5 {
+        	font-family: "proxima-nova",sans-serif;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 0.9em;
+			display: inline;
+        	letter-spacing: 0px; 			
+		}
 
 		#highlights {
-			border-top: 2px solid #666;
 			background-color: #444;
 		}
 		#highlights ul {
@@ -163,7 +189,6 @@
 			background-color: #333;
 			cursor: pointer;
 		}
-        #highlights li span { font-size: 0.7em; }
 
         #description {
         	background-color: #333;
@@ -173,17 +198,23 @@
 			font-size: 1em;
 			letter-spacing: 0.25px;
 			color: white;
-			border-top: 2px solid #666;
+			border-top: 1px solid #666;
 			padding: 15px 20px;
         }
       	
       	.panel .on { color: white; }
       	.panel .glyphicon { 
-      		font-size: 0.8em; 
+      		font-size: 0.7em; 
       		display: inline; 
       		color: #aaa; 
       	}
-        .panel .on .glyphicon { color: white; }
+      	.panel .fa { 
+      		font-size: 0.7em; 
+      		display: inline; 
+      		color: #aaa;
+      	}        
+      	.panel .on .glyphicon { color: white; }
+        .panel .on .fa { color: white; }
         .panel .header { color: #eee;}
         .panel .header .glyphicon { color: #ddd; }
 
@@ -255,18 +286,19 @@
 <div class="panel panel-default">
 
 	<!-- Default panel contents -->
-	<div class="panel-heading"><h4>SEEP CITY</h4></div>
+	<div class="panel-heading">
+		<h4>SEEP CITY</h4>
+		<h5>San Francisco Water Explorations</h5>
+	</div>
 
-	<ul class="list-group">
-	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Today's natural water</h5></li>	
-	    <ul class="list-group items">
-		    <li id="springs" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Springs &amp; seeps</h6></li>	
-		    <li id="lakes-creeks-marshes" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Lakes, creeks &amp; marshes</h6></li>
-	    </ul>			
+	<ul class="list-group ungrouped">
+	    <li class="list-group-item"><span class="fa fa-circle-thin" aria-hidden="true"></span><h5>&nbsp;&nbsp;Today's land contours</h5></li>
+	   	<li class="list-group-item"><span class="fa fa-circle-thin" aria-hidden="true"></span><h5>&nbsp;&nbsp;Streets</h5></li>
+	    <li class="list-group-item"><span class="fa fa-circle-thin" aria-hidden="true"></span><h5>&nbsp;&nbsp;Today's natural water</h5></li>			
 	</ul>
 
 	<ul class="list-group">
-	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historic water</h5></li>	
+	    <li class="list-group-item header"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Historic water</h5></li>	
 	    <ul class="list-group items">
 		    <li id="described-springs" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Described springs</h6></li>	
 		    <li id="fresh-water-past" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Fresh water</h6></li>
@@ -277,19 +309,19 @@
 	</ul>
 
 	<ul class="list-group">
-	    <li class="list-group-item header"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Development</h5></li>	
+	    <li class="list-group-item header"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Development</h5></li>	
 	    <ul class="list-group items">
 		    <li id="road" class="list-group-item layer"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Streets</h6></li>
 		    <li id="contours" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Today's land contours</h6></li>		
 		    <li id="bay-fill" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Bay &amp; marsh fill</h6></li>
 		    <li id="developed-freshwater" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Developed freshwater</h6></li>
 		    <li id="reservoirs" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Reservoirs &amp; tanks</h6></li>
-		    <li id="treatment-plants" class="list-group-item layer on"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Treatment plants</h6></li>
+		    <li id="treatment-plants" class="list-group-item layer"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span><h6>&nbsp;&nbsp;Treatment plants</h6></li>
 	    </ul>			
 	</ul>
 
 	<ul class="list-group">
-	    <li class="list-group-item header comparisons"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Comparisons</h5></li>	
+	    <li class="list-group-item header comparisons"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span><h5>&nbsp;&nbsp;Comparisons</h5></li>	
 	    <ul class="list-group items">
 	    	<li id="mapbox-mapbox-satellite" class="list-group-item layer comparison"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span><h6>&nbsp;&nbsp;Satellite overlay</h6>
 		    <li id="mapbox-mapbox-satellite-opacity" class="list-group-item control"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
@@ -488,6 +520,10 @@ function layersOn() {
 		map.setLayoutProperty('road-service-driveway', 'visibility', 'visible');
 		map.setLayoutProperty('road-street-low-zoom', 'visibility', 'visible');
 		map.setLayoutProperty('road-path', 'visibility', 'visible');
+		map.setLayoutProperty('bridge-motorway', 'visibility', 'visible');
+		map.setLayoutProperty('bridge-main', 'visibility', 'visible');
+		map.setLayoutProperty('bridge-motorway-link', 'visibility', 'visible');
+		map.setLayoutProperty('bridge-rail-tracks', 'visibility', 'visible');
 	}
 	if (layerId == "lakes-creeks-marshes") {
 		map.setLayoutProperty('natural-freshwater', 'visibility', 'visible');
@@ -506,6 +542,7 @@ function layersOn() {
 	}
 	if (layerId == "reservoirs-past") {
 		map.setLayoutProperty('reservoirs-past', 'visibility', 'visible');
+		map.setLayoutProperty('reservoirs-past-stroke', 'visibility', 'visible');
 	}	
 	if (layerId == "contours") {
 		map.setLayoutProperty('contours-simple', 'visibility', 'visible');
@@ -514,6 +551,10 @@ function layersOn() {
 	if (layerId == "developed-freshwater") {
 		map.setLayoutProperty('developed-freshwater', 'visibility', 'visible');
 		map.setLayoutProperty('developed-freshwater-stroke', 'visibility', 'visible');
+	}
+	if (layerId == "reservoirs") {
+		map.setLayoutProperty('reservoirs-tanks-treatment', 'visibility', 'visible');
+		map.setLayoutProperty('reservoirs-tanks-treatment-stroke', 'visibility', 'visible');
 	}
 }
 
@@ -529,6 +570,10 @@ function layersOff() {
 		map.setLayoutProperty('road-service-driveway', 'visibility', 'none');
 		map.setLayoutProperty('road-street-low-zoom', 'visibility', 'none');
 		map.setLayoutProperty('road-path', 'visibility', 'none');
+		map.setLayoutProperty('bridge-motorway', 'visibility', 'none');
+		map.setLayoutProperty('bridge-main', 'visibility', 'none');
+		map.setLayoutProperty('bridge-motorway-link', 'visibility', 'none');
+		map.setLayoutProperty('bridge-rail-tracks', 'visibility', 'none');
 	}
 	if (layerId == "lakes-creeks-marshes") {
 		map.setLayoutProperty('natural-freshwater', 'visibility', 'none');
@@ -547,6 +592,7 @@ function layersOff() {
 	}
 	if (layerId == "reservoirs-past") {
 		map.setLayoutProperty('reservoirs-past', 'visibility', 'none');
+		map.setLayoutProperty('reservoirs-past-stroke', 'visibility', 'none');
 	}
 	if (layerId == "contours") {
 		map.setLayoutProperty('contours-simple', 'visibility', 'none');
@@ -555,6 +601,10 @@ function layersOff() {
 	if (layerId == "developed-freshwater") {
 		map.setLayoutProperty('developed-freshwater', 'visibility', 'none');
 		map.setLayoutProperty('developed-freshwater-stroke', 'visibility', 'none');
+	}
+	if (layerId == "reservoirs") {
+		map.setLayoutProperty('reservoirs-tanks-treatment', 'visibility', 'none');
+		map.setLayoutProperty('reservoirs-tanks-treatment-stroke', 'visibility', 'none');
 	}
 }
 
@@ -630,8 +680,8 @@ map.on('click', function (e) {
 $('.header').click(function() {
 	var group = $(this).parent();
 	group.children('ul').toggle();
-	group.children('.header').children('span').toggleClass('glyphicon-menu-right');	
-	group.children('.header').children('span').toggleClass('glyphicon-menu-down');	
+	group.children('.header').children('span').toggleClass('glyphicon-triangle-right');	
+	group.children('.header').children('span').toggleClass('glyphicon-triangle-bottom');	
 });
 
 var groupId, layerId, controlId;
