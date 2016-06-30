@@ -68,6 +68,21 @@ $(document).ready(function() {
 			}
 		});
 
+		map.addSource("bay-and-marsh-fill", {
+			"type": "vector",
+			"url": 'mapbox://iwsstuart.50uz2cwq'
+		});
+		map.addLayer({
+			"id": "bay-and-marsh-fill",
+			"type": "fill",
+			"source": "bay-and-marsh-fill",
+			"source-layer": "Bay_and_marsh_fill",
+			"paint": {
+			    "fill-color": "#899292",
+			    "fill-opacity": 0.6
+			}
+		}, 'marsh-past');
+
 		// map.addSource("marsh-now", {
 		// 	"type": "vector",
 		// 	"url": "mapbox://iwsstuart.0nxfqu5j"
@@ -161,6 +176,9 @@ $(document).ready(function() {
 			map.setLayoutProperty('reservoirs-tanks-treatment', 'visibility', 'visible');
 			map.setLayoutProperty('reservoirs-tanks-treatment-stroke', 'visibility', 'visible');
 		}
+		if (layerId == "bay-fill") {
+			map.setLayoutProperty('bay-and-marsh-fill', 'visibility', 'visible');
+		}
 	}
 
 	function layersOff() {
@@ -207,6 +225,9 @@ $(document).ready(function() {
 		if (layerId == "reservoirs") {
 			map.setLayoutProperty('reservoirs-tanks-treatment', 'visibility', 'none');
 			map.setLayoutProperty('reservoirs-tanks-treatment-stroke', 'visibility', 'none');
+		}
+		if (layerId == "bay-fill") {
+			map.setLayoutProperty('bay-and-marsh-fill', 'visibility', 'none');
 		}
 	}
 
